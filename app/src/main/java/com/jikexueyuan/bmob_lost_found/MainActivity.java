@@ -34,7 +34,7 @@ import static com.jikexueyuan.bmob_lost_found.R.id.btn_add;
 import static com.jikexueyuan.bmob_lost_found.R.id.layout_all;
 import static com.jikexueyuan.bmob_lost_found.R.id.tv_lost;
 
-public class MainActivity extends BaseActivity implements IPopupItemClick, AdapterView.OnItemLongClickListener,View.OnClickListener {
+public class MainActivity extends BaseActivity implements IPopupItemClick, AdapterView.OnItemLongClickListener, View.OnClickListener {
 
 
     RelativeLayout layoutAction;
@@ -88,7 +88,7 @@ public class MainActivity extends BaseActivity implements IPopupItemClick, Adapt
     @Override
     public void initData() {
         if (LostAdapter == null) {
-            LostAdapter = new QuickAdapter<Lost>(this,R.layout.item_list) {
+            LostAdapter = new QuickAdapter<Lost>(this, R.layout.item_list) {
                 @Override
                 protected void convert(BaseAdapterHelper helper, Lost item) {
                     helper.setText(R.id.tv_title, item.getTitle())
@@ -99,7 +99,7 @@ public class MainActivity extends BaseActivity implements IPopupItemClick, Adapt
             };
         }
         if (FoundAdapter == null) {
-            FoundAdapter = new QuickAdapter<Found>(this,R.layout.item_list) {
+            FoundAdapter = new QuickAdapter<Found>(this, R.layout.item_list) {
                 @Override
                 protected void convert(BaseAdapterHelper helper, Found item) {
                     helper.setText(R.id.tv_title, item.getTitle())
@@ -138,7 +138,7 @@ public class MainActivity extends BaseActivity implements IPopupItemClick, Adapt
             case R.id.btn_add:
                 Intent intent = new Intent(this, AddActivity.class);
                 intent.putExtra("from", tvLost.getTag().toString());
-                startActivityForResult(intent,1);
+                startActivityForResult(intent, 1);
                 break;
             case R.id.layout_found:
                 changeTextView(view);
@@ -233,7 +233,7 @@ public class MainActivity extends BaseActivity implements IPopupItemClick, Adapt
         layout_lost = view.findViewById(R.id.layout_lost);
         layout_found.setOnClickListener(this);
         layout_lost.setOnClickListener(this);
-        morePop = new PopupWindow(view,mScreenWidth,600);
+        morePop = new PopupWindow(view, mScreenWidth, 600);
         morePop.setTouchInterceptor(new View.OnTouchListener() {
             @Override
             public boolean onTouch(View view, MotionEvent motionEvent) {
@@ -252,13 +252,13 @@ public class MainActivity extends BaseActivity implements IPopupItemClick, Adapt
         morePop.setBackgroundDrawable(new BitmapDrawable());
         //动画效果从顶部弹下
         morePop.setAnimationStyle(R.style.MenuPop);
-        morePop.showAsDropDown(layoutAction,0,-dip2px(this,2.0f));
+        morePop.showAsDropDown(layoutAction, 0, -dip2px(this, 2.0f));
     }
 
     EditPopupWindow mPopupWindow;
     int position;
 
-    private void initEditPop(){
+    private void initEditPop() {
         mPopupWindow = new EditPopupWindow(this, 200, 48);
         mPopupWindow.setOnPopupItemClickListner(this);
     }
@@ -294,7 +294,7 @@ public class MainActivity extends BaseActivity implements IPopupItemClick, Adapt
         intent.putExtra("phone", phone);
         intent.putExtra("title", title);
         intent.putExtra("from", tag);
-        startActivityForResult(intent,1);
+        startActivityForResult(intent, 1);
 
     }
 
